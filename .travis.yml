@@ -1,0 +1,15 @@
+sudo: required
+
+language: go
+
+services:
+  - docker
+
+before_install:
+- wget https://github.com/kubernetes/kubernetes/releases/download/v1.0.7/kubernetes.tar.gz
+- tar -xzf kubernetes.tar.gz
+- cd kubernetes
+- hack/local-up-cluster.sh
+
+script:
+- docker run -it --rm  --privileged -v /atomicapp-helloapache:/atomicapp -v /run:/run -v /:/host --net=host --name helloapache -e NAME=helloapache -e IMAGE=projectatomic/helloapache projectatomic/helloapache -v  run  /atomicapp
