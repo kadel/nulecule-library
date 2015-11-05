@@ -1,13 +1,12 @@
 #!/bin/sh
 
-IMGNAME="helloapache"
+APPS_TO_TEST="helloapache mariadb-centos7-atomicapp"
 
-docker build -t $IMGNAME helloapache/
-atomic run $IMGNAME --provider=docker
+for APP in $APPS_TO_TEST; do
+  docker build -t $APP $APP
+  atomic run $APP --provider=docker
 
-docker ps
-ls  /var/lib/atomicapp
+  $APP/check.sh
 
-curl localhost:80
-
-atomic stop $IMGNAME --provider=docker
+  atomic stop $APP --provider=docker
+done
