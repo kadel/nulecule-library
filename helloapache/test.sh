@@ -2,7 +2,7 @@
 
 IMGNAME="helloapache"
 
-docker build -t $IMGNAME .
+docker build -t $IMGNAME helloapache/
 atomic run $IMGNAME --provider=docker
 
 curl localhost:80
