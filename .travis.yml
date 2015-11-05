@@ -8,7 +8,7 @@ services:
 before_install:
 - wget https://github.com/projectatomic/atomic/archive/v1.5.tar.gz
 - tar -xzf v1.5.tar.gz
-- sudo python atomic-1.5/setup.py install
+- cd atomic-1.5; sudo python setup.py install
 
 
 script:
