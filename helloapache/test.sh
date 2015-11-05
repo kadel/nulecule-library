@@ -3,10 +3,12 @@
 IMGNAME="helloapache"
 
 docker build -t $IMGNAME helloapache/
+mkdir /tmp/helloapache
+cd /tmp/helloapache
 atomic run $IMGNAME --provider=docker
 
 docker ps
-ls  /var/lib/atomicapp
+ls 
 
 curl localhost:80
 
