@@ -15,5 +15,4 @@ before_install:
 
 
 script:
-- docker build -t helloapache helloapache
-- mkdir helloapache-test; cd helloapache-test; atomic run helloapache --provider=docker
+- helloapache/test.sh
