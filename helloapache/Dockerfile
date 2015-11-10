@@ -1,8 +1,8 @@
-FROM projectatomic/atomicapp:0.2.1
+FROM atomicapp:dev
 
 MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
 
-LABEL io.projectatomic.nulecule.providers="kubernetes,docker" \
+LABEL io.projectatomic.nulecule.providers="kubernetes,docker,marathon" \
       io.projectatomic.nulecule.specversion="0.0.2"
 
 ADD /Nulecule /Dockerfile README.md /application-entity/
