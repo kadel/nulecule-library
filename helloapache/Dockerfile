@@ -1,4 +1,4 @@
-FROM atomicapp:dev
+FROM tomaskral/atomicapp:marathon-provider
 
 MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
 
