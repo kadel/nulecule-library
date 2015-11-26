@@ -24,7 +24,10 @@ graph:
         description: database host
         default: mariadb:3306
       - name: port
-        description: port for docker port mapping (used only with docker provider)
+        description: |
+          (only for Marathon and Docker provider)
+          Port for Docker port mapping and for Marathon service router197381
+          (see: https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html#service-ports-assignment)
         default: 8080
     artifacts:
       kubernetes:
@@ -36,3 +39,5 @@ graph:
         - file://artifacts/openshift/pod.yaml
       docker:
         - file://artifacts/docker/wordpress-run
+      marathon:
+        - file://artifacts/marathon/wordpress.json
