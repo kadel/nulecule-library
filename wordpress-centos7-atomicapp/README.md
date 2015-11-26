@@ -10,6 +10,7 @@ Currently supported providers:
 - Kubernetes
 - OpenShift3
 - Native Docker
+- Marathon
 
 You'll need to run this from a workstation that has the atomic command.
 If you wish to use the Kubernetes provider, you will also need a `kubectl`
@@ -47,12 +48,35 @@ $EDITOR  answers.conf
 NOTE: For Wordpress image and for MariaDB image you have to use same db_pass, db_user, db_name.
 Otherwise Wordpress will not be able connect to database.
 
+Example `answers.conf` for Marathon provider
+```
+[wordpress]
+image = wordpress
+db_pass = pass
+db_name = db
+db_user = user
+db_host = 172.17.42.1:13306
+port = 8088
+
+[mariadb-atomicapp]
+db_pass = pass
+db_name = db
+db_user = user
+marathon_service_port = 13306
+root_pass = MySQLPass
+
+[general]
+namespace = default
+provider = marathon
+providerapi = http://192.168.121.237:8080
+```
+
 Run application
 ```
 atomic run projectatomic/wordpress-centos7-atomicapp
 ```
 
-## Test
+## Test (Kubernetes)
 
 Get clusterIP of wordpress service.
 ```
