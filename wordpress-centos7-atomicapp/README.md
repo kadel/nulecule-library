@@ -6,6 +6,8 @@ It will reuse the MariaDB AtomicApp to provide Kubernetes, OpenShift3 and Docker
 This example depends on [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns)
  being configured on your cluster, when using Kubernetes.
 
+When using Marathon provider you need [service router](https://github.com/kadel/Dockerfiles/tree/master/marathon-servicerouter) or [mesos-dns](https://github.com/mesosphere/mesos-dns) for more information on service discovery when using Marathon see:  https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html#service-ports-assignment
+
 Currently supported providers:
 - Kubernetes
 - OpenShift3
@@ -48,7 +50,9 @@ $EDITOR  answers.conf
 NOTE: For Wordpress image and for MariaDB image you have to use same db_pass, db_user, db_name.
 Otherwise Wordpress will not be able connect to database.
 
-Example `answers.conf` for Marathon provider
+Example `answers.conf` for Marathon provider.
+([additional service discovery mechanism is needed](
+https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html))
 ```
 [wordpress]
 image = wordpress
@@ -70,6 +74,7 @@ namespace = default
 provider = marathon
 providerapi = http://192.168.121.237:8080
 ```
+
 
 Run application
 ```
@@ -103,6 +108,8 @@ Content-Type: text/html; charset=UTF-8
 ```
 
 # Changelog
+## 2.0.1
+ - added Mesos provider
 
 ## 2.0.0
 - Modified to use [DNS in Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns)
