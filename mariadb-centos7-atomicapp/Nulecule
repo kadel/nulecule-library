@@ -18,6 +18,12 @@ graph:
       - name: root_pass
         description: Database Root User Password
         default: MySQLPass
+      - name: marathon_service_port
+        description: |
+          (only for Marathon provider)
+          Port which Marathon service router will map to container
+          (see: https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html#service-ports-assignment)
+        default: 13306
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/mariadb-pod.yaml
@@ -27,3 +33,5 @@ graph:
           - kubernetes
       docker:
         - file://artifacts/docker/mariadb-app-pod_run
+      marathon:
+         - file://artifacts/marathon/mariadb.json

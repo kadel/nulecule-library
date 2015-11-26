@@ -1,0 +1,25 @@
+{
+  "id": "mariadb",
+  "cpus": 0.5,
+  "mem": 128,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "centos/mariadb",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "servicePort": $marathon_service_port,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+    "MYSQL_USER": "$db_user",
+    "MYSQL_PASSWORD": "$db_pass",
+    "MYSQL_ROOT_PASSWORD": "$root_pass",
+    "MYSQL_DATABASE": "$db_name"
+   }
+}
