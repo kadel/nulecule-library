@@ -9,6 +9,9 @@ metadata:
 graph:
   - name: mariadb-atomicapp
     params:
+      - name: image
+        description: Name of image
+        default: centos/mariadb
       - name: db_user
         description: Database User
       - name: db_pass
@@ -20,7 +23,7 @@ graph:
         default: MySQLPass
     artifacts:
       kubernetes:
-        - file://artifacts/kubernetes/mariadb-pod.yaml
+        - file://artifacts/kubernetes/mariadb-rc.yaml
         - file://artifacts/kubernetes/mariadb-service.yaml
       openshift:
         - inherit:

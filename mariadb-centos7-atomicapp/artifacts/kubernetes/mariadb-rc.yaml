@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mariadb
+spec:
+  replicas: 1
+  selector:
+    name: mariadb
+  template:
+    metadata:
+      name: mariadb
+      labels:
+        name: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: $image
+          ports:
+            - containerPort: 3306
+          resources:
+            limits:
+              cpu: 100m
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: $root_pass
+            - name: MYSQL_DATABASE
+              value: $db_name
+            - name: MYSQL_USER
+              value: $db_user
+            - name: MYSQL_PASSWORD
+              value: $db_pass
+
