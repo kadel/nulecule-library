@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.4.0
+FROM tomaskral/atomicapp:marathon-force_types
 
 MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
