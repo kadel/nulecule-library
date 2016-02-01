@@ -9,7 +9,7 @@ metadata:
 
 graph: 
   - name: mariadb-centos7-atomicapp
-    source: docker://projectatomic/mariadb-centos7-atomicapp
+    source: docker://tomaskral/mariadb-atomicapp
   - name: etherpad-app
     params: 
       - name: image
