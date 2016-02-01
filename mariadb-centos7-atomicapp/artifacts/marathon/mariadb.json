@@ -1,0 +1,28 @@
+{
+  "id": "mariadb-centos7",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "centos/mariadb",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "hostPort": 0,
+          "servicePort": 3306,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+      "MYSQL_ROOT_PASSWORD": "$root_pass",
+       "MYSQL_DATABASE": "$db_name",
+       "MYSQL_USER": "$db_user",
+       "MYSQL_PASSWORD": "$db_pass"
+  },
+  "cpus": 0.1,
+  "mem": 128
+}
+
+
