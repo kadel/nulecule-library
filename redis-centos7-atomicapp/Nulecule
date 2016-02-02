@@ -24,6 +24,8 @@ graph:
           - kubernetes
       docker:
         - file://artifacts/docker/redis-master_run
+      marathon:
+        - file://artifacts/marathon/redis-master.json
   - name: redisslave-app
     params:
       - name: image
@@ -32,6 +34,9 @@ graph:
       - name: master_hostport
         description: The host TCP port of the redis master
         default: 6379
+      - name: master_host
+        description: The host of the redis master
+        default: redis-master
       - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
@@ -47,4 +52,6 @@ graph:
           - kubernetes
       docker:
         - file://artifacts/docker/redis-slave_run
+      marathon:
+        - file://artifacts/marathon/redis-slave.json
 

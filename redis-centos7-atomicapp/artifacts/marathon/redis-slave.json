@@ -1,0 +1,24 @@
+{
+  "id": "redis-slave",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "$image",
+      "portMappings": [
+        {
+          "containerPort": 6379,
+          "servicePort": $hostport,
+          "hostPort": 0,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "cmd": "redis-server /etc/redis.conf --bind 0.0.0.0 --slaveof $master_host $master_hostport",
+  "cpus": 0.1,
+  "mem": 256,
+  "instances": $instances
+}
+
+
